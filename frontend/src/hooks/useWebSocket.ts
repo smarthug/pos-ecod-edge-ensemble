@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { MetricMessage, ConnectionStatus } from '../types';
+import type { MetricMessage, ConnectionStatus } from '../types';
 
 interface UseWebSocketOptions {
   url: string;

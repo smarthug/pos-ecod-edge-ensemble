@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { MetricMessage } from '../types';
+import type { MetricMessage } from '../types';
 
 interface UseTimeseriesOptions {
   maxLength?: number;

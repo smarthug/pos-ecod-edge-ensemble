@@ -1,7 +1,7 @@
 import { Card, CardContent, Typography } from '@mui/material';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { format } from 'date-fns';
-import { MetricMessage } from '../types';
+import type { MetricMessage } from '../types';
 
 interface MetricChartProps {
   title: string;
