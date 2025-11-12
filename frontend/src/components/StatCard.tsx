@@ -1,5 +1,5 @@
 import { Card, CardContent, Typography, Box } from '@mui/material';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface StatCardProps {
   title: string;
@@ -11,7 +11,8 @@ interface StatCardProps {
 }
 
 export const StatCard = ({ title, value, unit, icon, color = '#1976d2', alarm = false }: StatCardProps) => {
-  const displayValue = typeof value === 'number' ? value.toFixed(2) : value;
+  const isNumber = typeof value === 'number';
+  const displayValue = isNumber ? (value as number).toFixed(2) : value;
   const bgColor = alarm ? '#ffebee' : 'white';
   const borderColor = alarm ? '#f44336' : color;
 
@@ -30,8 +31,29 @@ export const StatCard = ({ title, value, unit, icon, color = '#1976d2', alarm = 
             <Typography color="textSecondary" gutterBottom variant="body2">
               {title}
             </Typography>
-            <Typography variant="h4" component="div" sx={{ color: alarm ? '#f44336' : 'inherit' }}>
-              {displayValue}
+            <Typography
+              variant="h4"
+              component="div"
+              sx={{
+                color: alarm ? '#f44336' : 'inherit',
+                // Prevent layout shift as numbers change
+                fontVariantNumeric: 'tabular-nums',
+                display: 'flex',
+                alignItems: 'baseline',
+                gap: 0.5,
+              }}
+            >
+              <Box
+                component="span"
+                sx={{
+                  display: 'inline-block',
+                  whiteSpace: 'nowrap',
+                  textAlign: 'right',
+                  width: isNumber ? '10ch' : '16ch',
+                }}
+              >
+                {displayValue}
+              </Box>
               {unit && (
                 <Typography component="span" variant="h6" color="textSecondary" sx={{ ml: 0.5 }}>
                   {unit}

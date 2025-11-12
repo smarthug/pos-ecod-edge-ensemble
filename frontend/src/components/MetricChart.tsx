@@ -46,7 +46,12 @@ export const MetricChart = ({
               tickFormatter={(timestamp) => format(new Date(timestamp), 'HH:mm:ss')}
               stroke="#666"
             />
-            <YAxis label={{ value: yAxisLabel, angle: -90, position: 'insideLeft' }} stroke="#666" />
+            <YAxis
+              width={64}
+              label={{ value: yAxisLabel, angle: -90, position: 'insideLeft' }}
+              stroke="#666"
+              tickFormatter={(v: number) => formatValue(Number(v))}
+            />
             <Tooltip
               labelFormatter={(timestamp) => format(new Date(timestamp as number), 'HH:mm:ss')}
               formatter={(value: number) => formatValue(value)}
