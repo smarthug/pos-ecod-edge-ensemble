@@ -1,0 +1,7 @@
+interval: 0.0            # seconds
+window: 5                # sliding window size
+baseline: 60             # number of windows to form baseline
+threshold_pct: 98        # percentile threshold for alarm
+sustain: 6               # out of last 10 exceed count to trigger alarm
+ensemble: "max"          # "max" or "mean"
+features: ["cpu","mem","net","io"]
